@@ -16,14 +16,7 @@ interface CurrentWeather {
 
 interface ForecastItem {
   date: number
-  temperature: {
-    day: number
-    min: number
-    max: number
-    night: number
-    eve: number
-    morn: number
-  }
+  temperature: number
   weather: {
     id: number
     main: string
@@ -75,14 +68,15 @@ export const useStore = defineStore({
 
     async fetchForecast() {
       console.log('fetchForecast called')
-      const data = await fetchForecast(this.location)
-      console.log('fetchForecast response: ', data)
-      // const forecast: ForecastItem[] = data.map((day: any) => ({
-      //   date: day.dt,
-      //   temperature: day.temp.day,
-      //   condition: day.weather[0].main
-      // }))
-      this.forecast = data.daily
+      const response = await fetchForecast(this.location)
+      console.log('fetchForecast response: ', response)
+      const forecast: ForecastItem[] = response.map((day: any) => ({
+        date: day.date,
+        temperature: day.temperature,
+        weather: day.weather
+      }))
+      this.forecast = forecast
+      console.log('Stored forecast: ', this.forecast)
     }
   }
 })
