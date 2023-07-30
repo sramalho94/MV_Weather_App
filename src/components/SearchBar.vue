@@ -1,15 +1,23 @@
 <template>
-  <v-text-field
-    label="Enter Location"
-    v-model="location"
-    @keyup.enter="searchWeather"
-    outlined
-    clearable
-  >
-    <template v-slot:append
-      ><v-btn color="primary" @click="searchWeather">Search</v-btn></template
-    >
-  </v-text-field>
+  <v-container>
+    <v-row justify="center">
+      <v-col cols="12" md="8" sm="4">
+        <v-text-field
+          label="Enter Location"
+          v-model="location"
+          @keyup.enter="searchWeather"
+          filled
+          clearable
+        >
+          <template v-slot:append>
+            <v-btn color="primary" @click="searchWeather" icon>
+              <v-icon>mdi-magnify</v-icon>
+            </v-btn>
+          </template>
+        </v-text-field>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts">
