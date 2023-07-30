@@ -20,6 +20,6 @@ const app = createApp(App)
 const pinia = createPinia()
 app.use(pinia)
 
-registerPlugins(app)
+registerPlugins(app, pinia)
 
 app.mount('#app')
