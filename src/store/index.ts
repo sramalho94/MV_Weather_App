@@ -1,6 +1,9 @@
 // Utilities
 import { defineStore } from 'pinia'
-import { fetchCurrentWeather, fetchForecast } from '@/services/weatherService'
+import {
+  fetchAPICurrentWeather,
+  fetchAPIForecast
+} from '@/services/weatherService'
 
 // interfaces for CurrentWeather and Forecast
 interface CurrentWeather {
@@ -44,7 +47,7 @@ export const useStore = defineStore({
 
     async fetchCurrentWeather() {
       console.log('fetchCurrentWeather called')
-      const data = await fetchCurrentWeather(this.location)
+      const data = await fetchAPICurrentWeather(this.location)
       console.log('fetchCurrentWeather response: ', data)
 
       // Map the returned data to CurrentWeather type
@@ -65,7 +68,7 @@ export const useStore = defineStore({
 
     async fetchForecast() {
       console.log('fetchForecast called')
-      const response = await fetchForecast(this.location)
+      const response = await fetchAPIForecast(this.location)
       console.log('fetchForecast response: ', response)
       const forecast: ForecastItem[] = response.map((day: any) => ({
         date: day.date,

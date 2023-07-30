@@ -2,24 +2,14 @@ const API_KEY = import.meta.env.VITE_WEATHER_KEY
 import axios from 'axios'
 
 // function to get currentWeather
-export async function fetchCurrentWeather(location: string) {
-  // console.log('fetchCurrentWeather called with location: ', location)
+export async function fetchAPICurrentWeather(location: string) {
   try {
-    // Get current weather data and coordinates
-    // const url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`
-    // console.log(url)
     const response = await axios.get(
       `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`
     )
-    // const { lat, lon } = response.data.coord
-
-    // const latLongResponse = await axios.get(
-    //   `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,alerts&appid=${API_KEY}`
-    // )
 
     const weatherData = {
       ...response.data
-      // latLongData: latLongResponse.data
     }
 
     // convert temp to Celsius and Fahrenheit
@@ -40,7 +30,7 @@ export async function fetchCurrentWeather(location: string) {
 }
 
 // function to get 5 day forecast
-export async function fetchForecast(location: string) {
+export async function fetchAPIForecast(location: string) {
   console.log('fetchForecast called with location: ', location)
   try {
     // Get latitude and longitude for location

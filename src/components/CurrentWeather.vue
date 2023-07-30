@@ -17,6 +17,9 @@
           <v-card-subtitle class="text-center">{{
             store.currentWeather?.condition
           }}</v-card-subtitle>
+          <v-card-subtitle class="text-center">{{
+            store.currentWeather?.conditionDescription
+          }}</v-card-subtitle>
           <v-card-text>
             <v-row>
               <v-col cols="12" sm="4" class="text-center">
