@@ -6,20 +6,20 @@ export async function fetchCurrentWeather(location: string) {
   // console.log('fetchCurrentWeather called with location: ', location)
   try {
     // Get current weather data and coordinates
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`
-    console.log(url)
+    // const url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`
+    // console.log(url)
     const response = await axios.get(
       `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`
     )
-    const { lat, lon } = response.data.coord
+    // const { lat, lon } = response.data.coord
 
-    const oneCallResponse = await axios.get(
-      `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,alerts&appid=${API_KEY}`
-    )
+    // const latLongResponse = await axios.get(
+    //   `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,alerts&appid=${API_KEY}`
+    // )
 
     const weatherData = {
-      ...response.data,
-      oneCallData: oneCallResponse.data
+      ...response.data
+      // latLongData: latLongResponse.data
     }
 
     // convert temp to Celsius and Fahrenheit
@@ -28,7 +28,7 @@ export async function fetchCurrentWeather(location: string) {
     weatherData.main.tempCel = Math.round(kelvin - 273.15)
     weatherData.main.tempFar = Math.round(((kelvin - 273.15) * 9) / 5 + 32)
 
-    // console.log('fetchCurrentWeather response: ', weatherData)
+    console.log('fetchCurrentWeather response: ', weatherData)
     return weatherData
   } catch (error) {
     console.error(
@@ -65,7 +65,8 @@ export async function fetchForecast(location: string) {
         return {
           date: day.dt,
           temperature: day.temp.day,
-          weather: day.weather[0].description
+          weather: day.weather[0].main,
+          description: day.weather[0].description
         }
       })
 

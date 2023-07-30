@@ -12,20 +12,14 @@ interface CurrentWeather {
   locationName: string
   humidity: number
   windSpeed: number
+  icon: string
 }
 
 interface ForecastItem {
   date: number
   temperature: number
-  weather: {
-    id: number
-    main: string
-    description: string
-    icon: string
-  }[]
-  rain?: number
-  clouds: number
-  uvi: number
+  weather: string
+  description: string
 }
 
 interface State {
@@ -52,18 +46,21 @@ export const useStore = defineStore({
       console.log('fetchCurrentWeather called')
       const data = await fetchCurrentWeather(this.location)
       console.log('fetchCurrentWeather response: ', data)
-      // Map the returned data to your custom CurrentWeather type...
+
+      // Map the returned data to CurrentWeather type
       const weather: CurrentWeather = {
-        temperature: data.oneCallData.current.temp,
+        temperature: data.main.temp,
         tempCel: data.main.tempCel,
         tempFar: data.main.tempFar,
         condition: data.weather[0].main,
         conditionDescription: data.weather[0].description,
         locationName: data.name,
-        humidity: data.oneCallData.current.humidity,
-        windSpeed: data.oneCallData.current.wind_speed
+        humidity: data.main.humidity,
+        windSpeed: data.wind.speed,
+        icon: data.weather[0].icon
       }
       this.currentWeather = weather
+      console.log(`stored weather: `, this.currentWeather)
     },
 
     async fetchForecast() {
@@ -73,7 +70,8 @@ export const useStore = defineStore({
       const forecast: ForecastItem[] = response.map((day: any) => ({
         date: day.date,
         temperature: day.temperature,
-        weather: day.weather
+        weather: day.weather,
+        description: day.description
       }))
       this.forecast = forecast
       console.log('Stored forecast: ', this.forecast)
