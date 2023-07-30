@@ -8,19 +8,24 @@
         sm="6"
         md="4"
         lg="3"
-        xl="2"
       >
-        <v-card>
-          <v-card-title>
-            {{ formatDate(item.date) }}
-          </v-card-title>
+        <v-card class="forecast-card text-center pa-4">
+          <v-card-title class="blue--text">{{
+            formatDate(item.date)
+          }}</v-card-title>
+          <v-img
+            v-if="item.icon"
+            :src="generateIconUrl(item.icon)"
+            max-width="100"
+            contain
+            class="mx-auto mb-3"
+          />
           <v-card-text>
             <p>
               Day Temperature: {{ kelvinToCelsius(item.temperature) }}°C /
               {{ kelvinToFahrenheit(item.temperature) }}°F
             </p>
-            <p>Weather: {{ item.weather }}</p>
-            <p>Description: {{ item.weather }}</p>
+            <p>{{ item.weather }} : {{ item.description }}</p>
           </v-card-text>
         </v-card>
       </v-col>
@@ -51,16 +56,26 @@ export default defineComponent({
       return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
     }
 
-    return { forecast, kelvinToCelsius, kelvinToFahrenheit, formatDate }
-  },
+    const generateIconUrl = (icon: string) => {
+      return `http://openweathermap.org/img/wn/${icon}@2x.png`
+    }
 
-  filters: {
-    formatDate(value: number) {
-      const date = new Date(value * 1000)
-      return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
+    return {
+      forecast,
+      kelvinToCelsius,
+      kelvinToFahrenheit,
+      formatDate,
+      generateIconUrl
     }
   }
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.forecast-card {
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  border-radius: 8px;
+  margin-bottom: 1em;
+}
+</style>

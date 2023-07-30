@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="12" md="8" sm="4">
+      <v-col cols="12">
         <v-text-field
           label="Enter Location"
           v-model="location"
