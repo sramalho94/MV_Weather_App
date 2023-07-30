@@ -2,11 +2,13 @@
   <v-text-field
     label="Enter Location"
     v-model="location"
-    @key.enter="searchWeather"
+    @keyup.enter="searchWeather"
     outlined
     clearable
   >
-    <template v-slot:append><v-btn color="primary">Search</v-btn></template>
+    <template v-slot:append
+      ><v-btn color="primary" @click="searchWeather">Search</v-btn></template
+    >
   </v-text-field>
 </template>
 
@@ -22,6 +24,7 @@ export default defineComponent({
 
     const searchWeather = async () => {
       if (!location.value) return
+      console.log('location.value: ', location.value)
       store.setLocation(location.value)
       await store.fetchCurrentWeather()
       await store.fetchForecast()
