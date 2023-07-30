@@ -13,13 +13,6 @@
           <v-card-title class="blue--text">{{
             formatDate(item.date)
           }}</v-card-title>
-          <v-img
-            v-if="item.icon"
-            :src="generateIconUrl(item.icon)"
-            max-width="100"
-            contain
-            class="mx-auto mb-3"
-          />
           <v-card-text>
             <p>
               Day Temperature: {{ kelvinToCelsius(item.temperature) }}°C /
