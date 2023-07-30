@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from '@/store'
+import { useAppStore } from './store/app'
 import SearchBar from './components/SearchBar.vue'
 import CurrentWeather from './components/CurrentWeather.vue'
 import Forecast from './components/Forecast.vue'
 
-const store = useStore()
+const store = useAppStore()
 </script>

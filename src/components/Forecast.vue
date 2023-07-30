@@ -28,12 +28,12 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { useStore } from '@/store'
+import { useAppStore } from '@/store/app'
 
 export default defineComponent({
   name: 'Forecast',
   setup() {
-    const store = useStore()
+    const store = useAppStore()
     const forecast = computed(() => store.forecast)
 
     const kelvinToCelsius = (kelvin: number) => {

@@ -22,12 +22,12 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { useStore } from '@/store'
+import { useAppStore } from '@/store/app'
 export default defineComponent({
   name: 'SearchBar',
 
   setup() {
-    const store = useStore()
+    const store = useAppStore()
     const location = ref('')
 
     const searchWeather = async () => {

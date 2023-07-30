@@ -10,14 +10,13 @@ import App from './App.vue'
 // Composables
 import { createApp } from 'vue'
 
-import { createPinia } from 'pinia'
+import pinia from './store/index'
 
 // Plugins
 import { registerPlugins } from '@/plugins'
 
 const app = createApp(App)
 
-const pinia = createPinia()
 app.use(pinia)
 
 registerPlugins(app, pinia)

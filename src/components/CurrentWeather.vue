@@ -47,12 +47,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useStore } from '@/store'
+import { useAppStore } from '@/store/app'
 
 export default defineComponent({
   name: 'CurrentWeather',
   setup() {
-    const store = useStore()
+    const store = useAppStore()
 
     return {
       store
