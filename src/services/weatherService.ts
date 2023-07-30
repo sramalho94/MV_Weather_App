@@ -4,12 +4,25 @@ import axios from 'axios'
 
 // function to get currentWeather
 export async function fetchCurrentWeather(location: string) {
-  const response = await axios.get(`${BASE_URL}&q=${location}`)
-  return response.data
+  try {
+    const response = await axios.get(`${BASE_URL}&q=${location}`)
+    return response.data
+  } catch (error) {
+    console.error(
+      `Error fetching current weather for location "${location}":`,
+      error
+    )
+    throw error
+  }
 }
 
 // function to get 5 day forecast
 export async function fetchForecast(location: string) {
-  const response = await axios.get(`${BASE_URL}&q=${location}&cnt=5`)
-  return response.data
+  try {
+    const response = await axios.get(`${BASE_URL}&q=${location}&cnt=5`)
+    return response.data
+  } catch (error) {
+    console.error(`Error fetching forecast for location "${location}":`, error)
+    throw error
+  }
 }
