@@ -91,7 +91,7 @@ For this project I used several resources throughout the development process
 - Composition API Documentation
 
   - [Doclink](https://vuejs.org/guide/extras/composition-api-faq.html#what-is-composition-api)
-  - I used the composition API documentation as a reference. It provided inside into several useful methods and tools I used ie:
+  - I used the composition API documentation as a reference. It provided insight into several useful methods and tools I used ie:
 
     - ref
     - computed
