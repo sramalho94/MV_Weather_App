@@ -4,21 +4,21 @@
       <v-col cols="12">
         <v-card>
           <v-card-title class="text-center">{{
-            store.currentWeather?.locationName
+            currentWeather?.locationName
           }}</v-card-title>
           <v-row justify="center">
             <v-img
-              v-if="store.currentWeather?.icon"
-              :src="generateIconUrl(store.currentWeather?.icon)"
+              v-if="currentWeather?.icon"
+              :src="generateIconUrl(currentWeather?.icon)"
               max-width="150"
               contain
             />
           </v-row>
           <v-card-subtitle class="text-center">{{
-            store.currentWeather?.condition
+            currentWeather?.condition
           }}</v-card-subtitle>
           <v-card-subtitle class="text-center">{{
-            store.currentWeather?.conditionDescription
+            currentWeather?.conditionDescription
           }}</v-card-subtitle>
           <v-card-text>
             <v-row>
@@ -26,16 +26,16 @@
                 <v-icon>mdi-thermometer</v-icon>
                 Temperature:
                 {{
-                  `${store.currentWeather?.tempFar}°F /  ${store.currentWeather?.tempCel}°C`
+                  `${currentWeather?.tempFar}°F /  ${currentWeather?.tempCel}°C`
                 }}
               </v-col>
               <v-col cols="12" sm="4" class="text-center">
                 <v-icon>mdi-water-percent</v-icon>
-                Humidity: {{ store.currentWeather?.humidity }}
+                Humidity: {{ currentWeather?.humidity }}
               </v-col>
               <v-col cols="12" sm="4" class="text-center">
                 <v-icon>mdi-weather-windy</v-icon>
-                Wind Speed: {{ store.currentWeather?.windSpeed }}
+                Wind Speed: {{ currentWeather?.windSpeed }}
               </v-col>
             </v-row>
           </v-card-text>
@@ -46,7 +46,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { useAppStore } from '@/store/app'
 
 export default defineComponent({
@@ -55,15 +55,12 @@ export default defineComponent({
   // access Store to get currentWeather data
   setup() {
     const store = useAppStore()
-
+    const currentWeather = computed(() => store.currentWeather)
+    const generateIconUrl = (icon: string) =>
+      `http://openweathermap.org/img/wn/${icon}@2x.png`
     return {
-      store
-    }
-  },
-  methods: {
-    // method to convert icon key into src for image
-    generateIconUrl(icon: string) {
-      return `http://openweathermap.org/img/wn/${icon}@2x.png`
+      currentWeather,
+      generateIconUrl
     }
   }
 })
