@@ -17,8 +17,6 @@ export async function fetchAPICurrentWeather(location: string) {
     const kelvin = weatherData.main.temp
     weatherData.main.tempCel = Math.round(kelvin - 273.15)
     weatherData.main.tempFar = Math.round(((kelvin - 273.15) * 9) / 5 + 32)
-
-    console.log('fetchCurrentWeather response: ', weatherData)
     return weatherData
   } catch (error) {
     console.error(
@@ -31,7 +29,6 @@ export async function fetchAPICurrentWeather(location: string) {
 
 // function to get 5 day forecast
 export async function fetchAPIForecast(location: string) {
-  console.log('fetchForecast called with location: ', location)
   try {
     // Get latitude and longitude for location
     const response = await axios.get(
@@ -44,7 +41,6 @@ export async function fetchAPIForecast(location: string) {
       `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${API_KEY}`
     )
 
-    console.log('forecastResponse.data: ', forecastResponse.data)
     // Ensure that data is available before trying to access it
     if (forecastResponse.data && forecastResponse.data.daily) {
       // Extract 5 days forecast data
@@ -60,7 +56,6 @@ export async function fetchAPIForecast(location: string) {
         }
       })
 
-      console.log('fetchForecast response: ', processedForecast)
       return processedForecast
     } else {
       throw new Error('No forecast data available.')
