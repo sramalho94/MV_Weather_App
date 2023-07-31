@@ -71,5 +71,18 @@ export default defineComponent({
   max-width: 80%;
   margin: auto;
   margin-bottom: 2em;
+  border: 2px solid #7775e2;
+  background-color: #a8a5f2;
+  color: white;
+}
+
+.v-card .v-card__title,
+.v-card .v-card__subtitle,
+.v-card .v-card__text {
+  color: white;
+}
+
+.v-card .v-icon {
+  color: white;
 }
 </style>

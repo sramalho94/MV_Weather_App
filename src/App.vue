@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="inspire" style="background-color: #7775e2">
     <v-main>
       <!-- conditionally rendering currentweather and forecast based on content of store -->
       <SearchBar />
@@ -17,3 +17,10 @@ import Forecast from './components/Forecast.vue'
 
 const store = useAppStore()
 </script>
+
+<style scoped>
+.v-main {
+  height: 100%;
+  width: 100%;
+}
+</style>

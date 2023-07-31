@@ -55,5 +55,16 @@ export default defineComponent({
     0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
   border-radius: 8px;
   margin-bottom: 1em;
+  border: 2px solid #7775e2;
+  background-color: #a8a5f2;
+  color: white;
+}
+
+.forecast-card .v-card__title {
+  color: white;
+}
+
+.forecast-card .v-card__text {
+  color: white;
 }
 </style>
