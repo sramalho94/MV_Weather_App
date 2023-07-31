@@ -5,7 +5,7 @@ import axios from 'axios'
 export async function fetchAPICurrentWeather(location: string) {
   try {
     const response = await axios.get(
-      `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`
     )
 
     const weatherData = {
@@ -32,7 +32,7 @@ export async function fetchAPIForecast(location: string) {
   try {
     // Get latitude and longitude for location
     const response = await axios.get(
-      `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`
     )
     const { lat, lon } = response.data.coord
 
