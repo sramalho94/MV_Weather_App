@@ -42,14 +42,11 @@ export const useAppStore = defineStore({
   }),
   actions: {
     setLocation(location: string) {
-      console.log('setLocation called with: ', location)
       this.location = location
     },
 
     async fetchCurrentWeather() {
-      console.log('fetchCurrentWeather called')
       const data = await fetchAPICurrentWeather(this.location)
-      console.log('fetchCurrentWeather response: ', data)
 
       // Map the returned data to CurrentWeather type
       const weather: CurrentWeather = {
@@ -64,14 +61,11 @@ export const useAppStore = defineStore({
         icon: data.weather[0].icon
       }
       this.currentWeather = weather
-      console.log(`stored weather: `, this.currentWeather)
     },
 
     // function to fetch forecast and save to store, array of data from API response is mapped to individual days
     async fetchForecast() {
-      console.log('fetchForecast called')
       const response = await fetchAPIForecast(this.location)
-      console.log('fetchForecast response: ', response)
       const forecast: ForecastItem[] = response.map((day: any) => ({
         date: day.date,
         temperature: day.temperature,
@@ -79,7 +73,6 @@ export const useAppStore = defineStore({
         description: day.description
       }))
       this.forecast = forecast
-      console.log('Stored forecast: ', this.forecast)
     }
   }
 })
