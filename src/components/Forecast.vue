@@ -33,9 +33,13 @@ import { useAppStore } from '@/store/app'
 export default defineComponent({
   name: 'Forecast',
   setup() {
+    // access store
     const store = useAppStore()
+
+    // create computed values so that changes in store will update forecast in component
     const forecast = computed(() => store.forecast)
 
+    // methods to convert Kelvin to C and F
     const kelvinToCelsius = (kelvin: number) => {
       return Math.round(kelvin - 273.15)
     }
@@ -49,16 +53,11 @@ export default defineComponent({
       return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
     }
 
-    const generateIconUrl = (icon: string) => {
-      return `http://openweathermap.org/img/wn/${icon}@2x.png`
-    }
-
     return {
       forecast,
       kelvinToCelsius,
       kelvinToFahrenheit,
-      formatDate,
-      generateIconUrl
+      formatDate
     }
   }
 })
