@@ -62,7 +62,7 @@ To install and run this project:
 
 ---
 
-## Acknowledgements
+## Acknowledgements/ Resources Used
 
 ---
 
@@ -82,6 +82,21 @@ For this project I used several resources throughout the development process
 
   - I used this tool in conjunction with the Open Weather docs.
   - I made test calls to the API and used the response to structure my data.
+
+- Pinia Documentation
+
+  - [Doclink](https://pinia.vuejs.org/introduction.html)
+  - Pinia has very helpful documentation that helped me structure my store/app.ts file.
+
+- Composition API Documentation
+
+  - [Doclink](https://vuejs.org/guide/extras/composition-api-faq.html#what-is-composition-api)
+  - I used the composition API documentation as a reference. It provided inside into several useful methods and tools I used ie:
+
+    - ref
+    - computed
+    - defineComponent
+    - setup
 
 ---
 
