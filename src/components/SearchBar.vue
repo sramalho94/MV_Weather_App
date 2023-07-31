@@ -3,6 +3,7 @@
     <v-row justify="center">
       <v-col cols="12">
         <v-text-field
+          class="custom-input"
           label="Enter Location"
           v-model="location"
           @keyup.enter="searchWeather"
@@ -10,7 +11,12 @@
           clearable
         >
           <template v-slot:append>
-            <v-btn color="primary" @click="searchWeather" icon>
+            <v-btn
+              class="custom-button"
+              color="primary"
+              @click="searchWeather"
+              icon
+            >
               <v-icon>mdi-magnify</v-icon>
             </v-btn>
           </template>
@@ -48,4 +54,20 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.v-text-field.custom-input {
+  border: 2px solid #7775e2;
+  border-radius: 10px;
+  background-color: #a8a5f2;
+  color: white;
+}
+
+.v-text-field.custom-input .v-input__control input {
+  color: white;
+}
+
+.v-btn.custom-button {
+  background-color: #7775e2;
+  color: white;
+}
+</style>
