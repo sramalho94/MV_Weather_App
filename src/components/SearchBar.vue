@@ -27,12 +27,13 @@ export default defineComponent({
   name: 'SearchBar',
 
   setup() {
+    // access store and create ref for location
     const store = useAppStore()
     const location = ref('')
 
+    // function to search, returns if no value, sets store, and resets location ref after completion
     const searchWeather = async () => {
       if (!location.value) return
-      console.log('location.value: ', location.value)
       store.setLocation(location.value)
       await store.fetchCurrentWeather()
       await store.fetchForecast()
