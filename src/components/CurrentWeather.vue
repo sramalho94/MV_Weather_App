@@ -51,6 +51,8 @@ import { useAppStore } from '@/store/app'
 
 export default defineComponent({
   name: 'CurrentWeather',
+
+  // access Store to get currentWeather data
   setup() {
     const store = useAppStore()
 
@@ -59,6 +61,7 @@ export default defineComponent({
     }
   },
   methods: {
+    // method to convert icon key into src for image
     generateIconUrl(icon: string) {
       return `http://openweathermap.org/img/wn/${icon}@2x.png`
     }
