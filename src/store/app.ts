@@ -25,6 +25,7 @@ interface ForecastItem {
   description: string
 }
 
+// interface for store state
 interface State {
   location: string
   currentWeather: CurrentWeather | null
@@ -66,6 +67,7 @@ export const useAppStore = defineStore({
       console.log(`stored weather: `, this.currentWeather)
     },
 
+    // function to fetch forecast and save to store, array of data from API response is mapped to individual days
     async fetchForecast() {
       console.log('fetchForecast called')
       const response = await fetchAPIForecast(this.location)
