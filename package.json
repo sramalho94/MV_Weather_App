@@ -1,11 +1,13 @@
 {
   "name": "Weather_App",
   "version": "0.0.0",
+  "homepage": "http://sramalho94.github.io/MV_Weather_App",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --fix --ignore-path .gitignore"
+    "lint": "eslint . --fix --ignore-path .gitignore",
+    "deploy": "yarn run build && gh-pages -d dist"
   },
   "dependencies": {
     "@mdi/font": "7.0.96",
@@ -24,6 +26,7 @@
     "@vue/eslint-config-typescript": "^11.0.0",
     "eslint": "^8.0.0",
     "eslint-plugin-vue": "^9.0.0",
+    "gh-pages": "^5.0.0",
     "typescript": "^5.0.0",
     "vite": "^4.2.0",
     "vite-plugin-vuetify": "^1.0.0",

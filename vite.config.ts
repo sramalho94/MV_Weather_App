@@ -8,6 +8,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/MV_Weather_App/', // Add this line
   plugins: [
     vue({
       template: { transformAssetUrls }
