@@ -51,6 +51,8 @@ export async function fetchAPIForecast(location: string) {
         return {
           date: day.dt,
           temperature: day.temp.day,
+          tempFar: Math.round(((day.temp.day - 273.15) * 9) / 5 + 32),
+          tempCel: Math.round(day.temp.day - 273.15),
           weather: day.weather[0].main,
           description: day.weather[0].description
         }

@@ -21,6 +21,8 @@ interface CurrentWeather {
 interface ForecastItem {
   date: number
   temperature: number
+  tempCel: number
+  tempFar: number
   weather: string
   description: string
 }
@@ -70,7 +72,9 @@ export const useAppStore = defineStore({
         date: day.date,
         temperature: day.temperature,
         weather: day.weather,
-        description: day.description
+        description: day.description,
+        tempCel: day.tempCel,
+        tempFar: day.tempFar
       }))
       this.forecast = forecast
     }

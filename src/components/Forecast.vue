@@ -14,10 +14,7 @@
             formatDate(item.date)
           }}</v-card-title>
           <v-card-text>
-            <p>
-              Day Temperature: {{ kelvinToCelsius(item.temperature) }}°C /
-              {{ kelvinToFahrenheit(item.temperature) }}°F
-            </p>
+            <p>Day Temperature: {{ item.tempCel }}°C / {{ item.tempFar }}°F</p>
             <p>{{ item.weather }} : {{ item.description }}</p>
           </v-card-text>
         </v-card>
@@ -39,15 +36,6 @@ export default defineComponent({
     // create computed values so that changes in store will update forecast in component
     const forecast = computed(() => store.forecast)
 
-    // methods to convert Kelvin to C and F
-    const kelvinToCelsius = (kelvin: number) => {
-      return Math.round(kelvin - 273.15)
-    }
-
-    const kelvinToFahrenheit = (kelvin: number) => {
-      return Math.round((kelvin * 9) / 5 - 459.67)
-    }
-
     const formatDate = (value: number) => {
       const date = new Date(value * 1000)
       return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
@@ -55,8 +43,6 @@ export default defineComponent({
 
     return {
       forecast,
-      kelvinToCelsius,
-      kelvinToFahrenheit,
       formatDate
     }
   }
