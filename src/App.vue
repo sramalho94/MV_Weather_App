@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-main>
+      <!-- conditionally rendering currentweather and forecast based on content of store -->
       <SearchBar />
       <CurrentWeather v-if="store.currentWeather" />
       <Forecast v-if="store.forecast" />
